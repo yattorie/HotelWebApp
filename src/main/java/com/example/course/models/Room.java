@@ -2,6 +2,8 @@ package com.example.course.models;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Room")
@@ -25,6 +27,14 @@ public class Room {
 
     @Column(name = "Description")
     private String description;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Room_Service",
+            joinColumns = @JoinColumn(name = "RoomID"),
+            inverseJoinColumns = @JoinColumn(name = "ServID")
+    )
+    private List<Serv> services = new ArrayList<>();
 
     public int getId() {
         return id;

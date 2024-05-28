@@ -15,6 +15,16 @@ public class Booking {
     @Column(name = "totalAmount")
     private BigDecimal totalAmount;
 
+    @ManyToOne
+    @JoinColumn(name = "GuestID")
+    private Guest guest;
+    @ManyToOne
+    @JoinColumn(name = "RoomID")
+    private Room room;
+
+    @OneToOne
+    @JoinColumn(name = "PaymentID")
+    private Payment payment;
     public int getId() {
         return id;
     }
